@@ -13,6 +13,8 @@ This is useful for example, to include Javascripts within a CPS Portlet
 without having to change the main header lib template, and therefore
 make the page, even if the portlet is not shown, loads unecessary resources.
 
+see `resourcelibrary.txt` for an example
+
 How it does
 ===========
 
