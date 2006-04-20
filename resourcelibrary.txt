@@ -27,7 +27,7 @@ that adds the need into elements that will be added in the response::
       </head>
       <body>
 
-      <tal:block tal:define="dummy nocall:context/needResource;
+      <tal:block tal:define="dummy nocall:container/needResource;
                               dummy1 python:dummy('ok.js');
                               dummy2 python:dummy('ok2.css') ">
       </tal:block>
