@@ -1,5 +1,5 @@
 # -*- coding: ISO-8859-15 -*-
-# Copyright (c) 2004 Nuxeo SARL <http://nuxeo.com>
+# Copyright (c) 2006 Nuxeo SARL <http://nuxeo.com>
 # Authors: Tarek Ziadé <tz@nuxeo.com>
 #
 # This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 #
-# $Id:$
+# $Id$
 from Products.Five import BrowserView
 from zope.app.annotation.interfaces import IAnnotations
 
