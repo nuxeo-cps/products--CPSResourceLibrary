@@ -41,6 +41,8 @@ elements where added to the header::
     >>> example_url = 'http://nohost/%s/%s' % (folder_name, 'example')
     >>> browser.open(example_url)
     >>> contents = browser.contents
+    >>> contents
+    ''
 
 Let's extract just the header part::
 
