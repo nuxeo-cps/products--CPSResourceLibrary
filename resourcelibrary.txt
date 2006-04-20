@@ -46,7 +46,7 @@ Let's extract just the header part::
 
     >>> import re
     >>> contents = re.findall(r'(?si)(?<=<head>).*(?=</head>)', contents)[0].strip()
-    >>> '<script src="/++resource++ok.js"' in contents
+    >>> '<script src="++resource++ok.js"' in contents
     True
-    >>> '@import url("/++resource++ok2.css")' in contents
+    >>> '@import url("++resource++ok2.css")' in contents
     True
