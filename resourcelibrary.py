@@ -91,7 +91,6 @@ def injectResources(response):
             html.append('  -->')
             html.append('</style>')
         else:
-            # shouldn't get here; zcml.py is supposed to check includes
             raise RuntimeError('Resource library doesn\'t know how to '
                                 'include this file: "%s"' % name)
 
