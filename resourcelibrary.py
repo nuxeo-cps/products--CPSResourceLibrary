@@ -52,7 +52,9 @@ class ResourceRegisterer(BrowserView):
         else:
             register = response.rc_libraries
 
-        register.append(Library(library_name))
+        libnames = [ob.name for ob in register]
+        if library_name not in libnames:
+            register.append(Library(library_name))
 
 
 from ZPublisher.HTTPResponse import HTTPResponse

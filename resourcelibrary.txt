@@ -41,8 +41,6 @@ elements where added to the header::
     >>> example_url = 'http://nohost/%s/%s' % (folder_name, 'example')
     >>> browser.open(example_url)
     >>> contents = browser.contents
-    >>> contents
-    ''
 
 Let's extract just the header part::
 
@@ -52,3 +50,8 @@ Let's extract just the header part::
     True
     >>> '@import url("++resource++ok2.css")' in contents
     True
+
+Make sure we don't get doublons::
+
+    >>> re.findall('ok2.css', contents)
+    ['ok2.css']
