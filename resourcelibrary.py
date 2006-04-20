@@ -17,24 +17,31 @@
 # 02111-1307, USA.
 #
 # $Id$
+""" This module patches the publisher, in order
+to provide the same feature as zc.resourcelibrary, see README.txt
+"""
 from Products.Five import BrowserView
-from zope.app.annotation.interfaces import IAnnotations
 
 RC_REGISTER = 'ResourceRegisterer.libraries'
 
 class Library(object):
+    """ library object used to hold resource infos """
 
     def __init__(self, name):
         self.name = name
 
 class ResourceRegisterer(BrowserView):
+    """ used to register a library in the response
+    object """
 
     def _checkResource(self, rcname):
+        """ checked the type of the resource """
         if rcname.endswith('.js') or rcname.endswith('.css'):
             return None
         raise ValueError('%s not recognized as a resource' % rcname)
 
     def need(self, library_name):
+        """ add the resource to the list of resources to be injected """
         if self.request is None:
             return None
 
@@ -53,6 +60,7 @@ HTTPResponse.old_setBody = HTTPResponse.setBody
 old_setBody = HTTPResponse.old_setBody
 
 def setBodyWithResource(*args, **kw):
+    """ calls the injector with the response """
     response = old_setBody(*args, **kw)
     # need to inject headers here
     return injectResources(response)
