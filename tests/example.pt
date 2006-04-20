@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title tal:content="template/title">The title</title>
+  </head>
+  <body>
+
+   <tal:block tal:define="dummy nocall:context/needResource;
+                          dummy1 python:dummy('ok.js');
+                          dummy2 python:dummy('ok2.css') ">
+   </tal:block>
+
+  </body>
+</html>

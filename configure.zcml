@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="CPSResourceLibrary"
+    >
+
+  <browser:page
+    for="*"
+    class=".resourcelibrary.ResourceRegisterer"
+    name="needResource"
+    attribute="need"
+    permission="zope2.View"
+  />
+
+</configure>

@@ -1,0 +1,52 @@
+resourcelibrary
+===============
+
+resourcelibrary provides a view, that let the user ask for
+a resource to be append to the header part of the response.
+
+We'll be using a testbrowser.Browser to simulate a user viewing web pages.
+
+    >>> from Products.CPSResourceLibrary.tests import Browser
+    >>> browser = Browser()
+    >>> browser.addHeader('Authorization', 'Basic mgr:mgrpw')
+
+Making sure the root folder is there::
+
+    >>> from Testing.ZopeTestCase import folder_name
+    >>> example_url = 'http://nohost/%s' % folder_name
+    >>> browser.open(example_url)
+    >>> browser.contents
+    '<Folder at ...>'
+
+The `example` page template has calls to the `needResource` view,
+that adds the need into elements that will be added in the response::
+
+    <html>
+      <head>
+        <title tal:content="template/title">The title</title>
+      </head>
+      <body>
+
+      <tal:block tal:define="dummy nocall:context/needResource;
+                              dummy1 python:dummy('ok.js');
+                              dummy2 python:dummy('ok2.css') ">
+      </tal:block>
+
+      </body>
+    </html>
+
+Let's get the `example` page now, through the publisher, to check that
+elements where added to the header::
+
+    >>> example_url = 'http://nohost/%s/%s' % (folder_name, 'example')
+    >>> browser.open(example_url)
+    >>> contents = browser.contents
+
+Let's extract just the header part::
+
+    >>> import re
+    >>> contents = re.findall(r'(?si)(?<=<head>).*(?=</head>)', contents)[0].strip()
+    >>> '<script src="/++resource++ok.js"' in contents
+    True
+    >>> '@import url("/++resource++ok2.css")' in contents
+    True
