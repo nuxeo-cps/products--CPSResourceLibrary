@@ -81,8 +81,7 @@ def injectResources(response):
     for resource in resources:
         name = resource.name
         if name.endswith('.js'):
-            html.append('<script src="++resource++%s" '
-                        'language="Javascript1.1"' % (name))
+            html.append('<script src="++resource++%s" ' % (name))
             html.append('    type="text/javascript">')
             html.append('</script>')
         elif name.endswith('.css'):
