@@ -6,6 +6,7 @@
 
    <tal:block tal:define="dummy nocall:container/needResource;
                           dummy1 python:dummy('ok.js');
+                          dummy2 python:dummy('ok2.css');
                           dummy2 python:dummy('ok2.css') ">
    </tal:block>
 
